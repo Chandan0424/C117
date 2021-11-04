@@ -1,0 +1,36 @@
+#show_sketch{
+    float: right;
+    margin-right: 50px;
+    margin-left: -1000px;
+    margin-top: -45px;
+}
+h1{
+    width:100%;
+    background-color: rgb(79, 219, 196);
+    color:white;
+}
+body{
+    background-color: rgb(35, 255, 53);
+}
+.modal-dialog{
+    width:85%;
+}
+canvas{
+    border:10px ridge white;
+}
+#score{
+    margin-left: -1000px;
+    font-size: 20;
+    font-weight: bolder;
+}
+#timer{
+    margin-right: 300px;
+    float:right;
+    font-size: 20;
+    font-weight: bolder;
+}
+#drawn{
+    color: rgb(201, 36, 36);
+    font-weight: bolder;
+    font-size: 25px;
+}

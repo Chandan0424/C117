@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Quick Draw</title>
+  <title>Sketch Identification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,16 +20,12 @@
 
 <body>
 <center>
-  <h1>Quick Draw </h1>
+  <h1>Sketch Identification  </h1>
   <button id="show_sketch" class="btn btn-info" data-toggle="modal" data-target="#myModal">Show Sketch</button>
 
-  <p id="label">Your Sketch </p>
-  <p id="percent">Confidence: </p>
-  <p id="drawn">Sketch To Be Drawn:</p>
-
-  <span id="score">Score:</span>
-  <span id="timer">Timer: </span>
-
+  <p id="label">Label: </p>
+  <p id="percent">Accuracy: </p>
+  <button id="clear_canvas" class="btn btn-danger" onclick="clearCanvas()">Clear Canvas</button>
 
   <div id="myModal" class="modal fade">
     <div class="modal-dialog">

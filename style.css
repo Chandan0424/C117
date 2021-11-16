@@ -6,31 +6,33 @@
 }
 h1{
     width:100%;
-    background-color: rgb(79, 219, 196);
+    background-color: lightblue;
     color:white;
 }
 body{
-    background-color: rgb(35, 255, 53);
+    background-color: orange;
 }
 .modal-dialog{
     width:85%;
 }
 canvas{
-    border:10px ridge white;
+    border:10px ridge gray;
+    border-radius: 5px;
+    animation-name: qwerty;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    margin-top:50px;
 }
-#score{
-    margin-left: -1000px;
-    font-size: 20;
-    font-weight: bolder;
+
+@keyframes qwerty{
+    from{
+        box-shadow:1px 1px 40px red;
+    }
+    To{
+        box-shadow:1px 1px 40px yellow;
+    }
 }
-#timer{
-    margin-right: 300px;
-    float:right;
-    font-size: 20;
-    font-weight: bolder;
-}
-#drawn{
-    color: rgb(201, 36, 36);
-    font-weight: bolder;
-    font-size: 25px;
+
+#label,#percent{
+    font-size: 20px;
 }

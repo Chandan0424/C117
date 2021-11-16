@@ -1,50 +1,43 @@
-quick_draw_data_set= ['pen','paper','book','bottle']
-random_number= Math.floor((Math.random()*quick_draw_data_set.length)+1)
-if(random_number>=4){
-    random_number=0;
+function preload(){
+    classifier=ml5.imageClassifier('DoodleNet');
 }
-sketch= quick_draw_data_set[random_number];
-document.getElementById("drawn").innerHTML="Sketch To Be Drawn: "+sketch;
-timer_counter= 0;
-timer_check="";
-drawn_sketch="";
-answer_holder="";
-score= 0;
-
-console.log(Element_of_array);
-
-function preload(){}
 
 function setup(){
     canvas=createCanvas(400,400);
     canvas.center();
-    canvas.background("white");
+    background("white");
+    canvas.mouseReleased(classifyCanvas);
+    synth=window.speechSynthesis;
 }
 
 function draw(){
-    check_sketch();
-    if(drawn_sketch==sketch){
-        answer_holder="set";
-        score=score++;
-        document.getElementById("score").innerHTML="Score:"+score;
+    strokeWeight(5);
+    stroke("black");
+    if(mouseIsPressed){
+        line(pmouseX,pmouseY,mouseX,mouseY);
     }
 }
 
-function check_sketch(){
-    timer_counter=timer_counter++;
-    document.getElementById("timer").innerHTML="Timer:"+timer_counter;
-    console.log(timer_counter);
-    if(timer_counter>400){
-        timer_counter=0;
-        timer_check="completed";
-    }
-    if(timer_check=="completed"||answer_holder=="set"){
-        timer_check="";
-        answer_holder="";
-        updateCanvas();
-    }
+function clearCanvas(){
+    background("white");
 }
 
-function updateCanvas(){
-    canvas.background("white");
+function classifyCanvas(){
+    classifier.classify(canvas,gotResult);
+}
+
+function gotResult(error,results){
+    if(error){
+        console.error(error);
+    }
+    else{
+        console.log(results);
+        confidence=Math.round(results[0].confidence*100)
+
+        document.getElementById("label").innerHTML="Label: "+ results[0].label;
+        document.getElementById("percent").innerHTML="Accuracy: " + confidence + " %";
+
+        utterThis=new SpeechSynthesisUtterance(results[0].label);
+        synth.speak(utterThis);
+    }
 }
